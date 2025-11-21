@@ -1,7 +1,12 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const PORT = 3000;
+
+
+// const PORT = 3000;
+//this below port is for redner.com, comment it out when running locally
+const PORT = process.env.PORT || 3000;
+
 
 // Middleware
 app.use(cors());
