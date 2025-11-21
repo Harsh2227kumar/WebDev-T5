@@ -1,0 +1,124 @@
+{
+  "info": {
+    "name": "Books REST API",
+    "description": "Complete CRUD operations for managing books",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:3000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "GET All Books",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        },
+        "description": "Retrieve all books from the in-memory database"
+      }
+    },
+    {
+      "name": "GET Single Book",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/1",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "1"]
+        },
+        "description": "Retrieve a single book by ID"
+      }
+    },
+    {
+      "name": "POST Add Book",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"The Catcher in the Rye\",\n  \"author\": \"J.D. Salinger\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books",
+          "host": ["{{baseUrl}}"],
+          "path": ["books"]
+        },
+        "description": "Add a new book to the collection"
+      }
+    },
+    {
+      "name": "PUT Update Book",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"title\": \"1984 (Updated Edition)\",\n  \"author\": \"George Orwell\"\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/books/2",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "2"]
+        },
+        "description": "Update an existing book by ID"
+      }
+    },
+    {
+      "name": "DELETE Remove Book",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{baseUrl}}/books/3",
+          "host": ["{{baseUrl}}"],
+          "path": ["books", "3"]
+        },
+        "description": "Delete a book by ID"
+      }
+    }
+  ]
+}
+```
+
+## 5. **.gitignore** (Optional but recommended)
+```
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+.env.local
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
