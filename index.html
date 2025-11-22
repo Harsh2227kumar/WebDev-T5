@@ -3,2553 +3,713 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Harsh Kumar | DevOps & Web Enthusiast</title>
-    <!-- Load Tailwind CSS from CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Font Awesome for Icons (used for social links and category icons if Unicode emojis are insufficient) -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-      xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd/rB98lKIK+hE/tYq0tH6S8C7bJ0R5T0YwU3qR6h8R6z3J0q3o5e2A=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <style>
-      /* Custom Tailwind Configuration: Overrides based on latest dark theme and orange/pink palette */
-      :root {
-        --background: 222.2 84% 4.9%; /* Dark background */
-        --foreground: 210 40% 98%; /* White text */
-        --primary: 24 80% 50%; /* Orange */
-        --primary-foreground: 210 40% 98%;
-        --secondary: 330 30% 25%; /* Dark Pink */
-        --secondary-foreground: 210 40% 98%;
-        --border: 217.2 32.6% 17.5%;
-        --input: 217.2 32.6% 17.5%;
-        --ring: 330 60% 60%; /* Bright Pink Ring */
-      }
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: hsl(var(--background));
-        color: hsl(var(--foreground));
-      }
-      /* Utility for applying Tailwind variables directly in custom gradients */
-      .bg-gradient-orange-pink {
-        background-image: linear-gradient(
-          to right,
-          #f97316,
-          #ec4899
-        ); /* orange-500 to pink-500 */
-      }
-      /* Simulating the Vanta/Particle Background effect using CSS gradient and noise texture */
-      .vanta-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        z-index: -1;
-        background: linear-gradient(135deg, #111827, #0f172a);
-        opacity: 0.95;
-      }
-    </style>
+    <title>Books REST API Manager</title>
   </head>
-
-  <body class="bg-gray-900 text-white overflow-x-hidden">
-    <!-- Simulated Vanta Background -->
-    <div class="vanta-background"></div>
-
-    <!-- Navigation -->
-    <nav
-      class="sticky top-0 w-full z-40 transition-all duration-300 bg-gray-900/95 backdrop-blur-md border-b border-orange-500/20"
-    >
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center py-4">
-          <div
-            class="text-2xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-          >
-            Portfolio
-          </div>
-          <!-- Desktop Navigation -->
-          <div class="hidden md:flex space-x-8">
-            <a
-              href="#about"
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group"
-              >About
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"
-              ></span
-            ></a>
-            <a
-              href="#education"
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group"
-              >Education
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"
-              ></span
-            ></a>
-            <a
-              href="#experience"
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group"
-              >Experience
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"
-              ></span
-            ></a>
-            <a
-              href="#skills"
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group"
-              >Skills
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"
-              ></span
-            ></a>
-            <a
-              href="#projects"
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group"
-              >Projects
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"
-              ></span
-            ></a>
-            <a
-              href="#contact"
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300 relative group"
-              >Contact
-              <span
-                class="absolute -bottom-1 left-0 w-0 h-0.5 bg-orange-400 transition-all duration-300 group-hover:w-full"
-              ></span
-            ></a>
-          </div>
-          <!-- Mobile Menu Button (requires JavaScript to toggle, but we use Lucide for consistency) -->
-          <div class="md:hidden">
-            <button
-              class="text-gray-300 hover:text-orange-400 transition-colors duration-300"
-            >
-              <!-- Using inline SVG for simplicity in static file -->
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                class="lucide lucide-menu"
-              >
-                <line x1="4" x2="20" y1="12" y2="12" />
-                <line x1="4" x2="20" y1="6" y2="6" />
-                <line x1="4" x2="20" y1="18" y2="18" />
-              </svg>
-            </button>
-          </div>
-        </div>
-        <!-- Mobile Navigation (hidden by default, requires JS to show) -->
-      </div>
-    </nav>
-
-    <main class="relative z-10">
-      <!-- ============================== 1. HERO SECTION ============================== -->
-      <section
-        id="home"
-        class="relative min-h-[85vh] py-16 flex items-center justify-center overflow-hidden"
+  <body
+    style="
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+    "
+  >
+    <div style="max-width: 1400px; margin: 0 auto; padding: 20px">
+      <!-- Header -->
+      <div
+        style="
+          background: white;
+          border-radius: 15px;
+          padding: 30px;
+          margin-bottom: 20px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        "
       >
-        <div class="relative z-20 text-center px-4 sm:px-6 lg:px-8">
+        <div
+          style="
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 20px;
+          "
+        >
           <div>
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">
-              <span
-                class="bg-gradient-to-r from-orange-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent"
-              >
-                Harsh Kumar
-              </span>
+            <h1 style="margin: 0 0 5px 0; color: #333; font-size: 32px">
+              📚 Books REST API Manager
             </h1>
-            <h2 class="text-2xl md:text-3xl text-gray-300 mb-4">
-              <span
-                class="bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-              >
-                DevOps Engineer & Web Development Enthusiast
-              </span>
-            </h2>
-            <p class="text-lg md:text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-              B.Tech Computer Science Engineering Student
+            <p style="margin: 0; color: #666; font-size: 14px">
+              Full CRUD Operations: GET, POST, PUT, DELETE
             </p>
-            <p class="text-md text-gray-500 mb-12 max-w-xl mx-auto">
-              Passionate about containerized deployments, CI/CD pipelines, and
-              modern web development
-            </p>
-
-            <div class="flex justify-center space-x-6 mb-12">
-              <a
-                href="https://github.com/harsh2227kumar"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-3 bg-orange-600 hover:bg-orange-700 rounded-full transition-all duration-300"
-              >
-                <i class="fab fa-github text-white text-xl"></i>
-              </a>
-              <a
-                href="https://www.linkedin.com/in/harsh-2227-kumar/"
-                target="_blank"
-                rel="noopener noreferrer"
-                class="p-3 bg-pink-600 hover:bg-pink-700 rounded-full transition-all duration-300"
-              >
-                <i class="fab fa-linkedin-in text-white text-xl"></i>
-              </a>
-              <a
-                href="mailto:harsh2227official@gmail.com"
-                class="p-3 bg-green-600 hover:bg-green-700 rounded-full transition-all duration-300"
-              >
-                <i class="fas fa-envelope text-white text-xl"></i>
-              </a>
-            </div>
-
-            <a
-              href="#about"
-              class="px-8 py-4 bg-gradient-to-r from-orange-600 to-pink-600 hover:from-orange-700 hover:to-pink-700 rounded-full text-white font-semibold transition-all duration-300 inline-block"
+          </div>
+          <div style="display: flex; gap: 10px">
+            <button
+              onclick="loadBooks()"
+              style="
+                background: #6c757d;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.3s;
+              "
             >
-              Explore My Work
-            </a>
+              🔄 Refresh (GET)
+            </button>
+            <button
+              onclick="showAddModal()"
+              style="
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 12px 24px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 14px;
+                font-weight: 600;
+                transition: all 0.3s;
+              "
+            >
+              ➕ Add Book (POST)
+            </button>
           </div>
         </div>
 
         <div
-          class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce z-20"
+          style="
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+          "
+        >
+          <div style="display: flex; align-items: center; gap: 10px">
+            <label style="font-weight: 600; color: #495057; white-space: nowrap"
+              >API Base URL:</label
+            >
+            <input
+              type="text"
+              id="apiUrl"
+              value="http://64.227.169.141:3000"
+              style="
+                flex: 1;
+                padding: 10px 15px;
+                border: 2px solid #dee2e6;
+                border-radius: 8px;
+                font-size: 14px;
+                font-family: 'Courier New', monospace;
+              "
+            />
+          </div>
+          <div
+            style="
+              background: #e7f3ff;
+              padding: 10px 15px;
+              border-radius: 8px;
+              border-left: 4px solid #0066cc;
+            "
+          >
+            <span style="font-size: 12px; color: #0066cc; font-weight: 600"
+              >PORT: 3000</span
+            >
+          </div>
+        </div>
+
+        <!-- API Endpoints Info -->
+        <div
+          style="
+            margin-top: 15px;
+            padding: 15px;
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            border-radius: 8px;
+          "
+        >
+          <div style="font-weight: 600; color: #856404; margin-bottom: 8px">
+            📡 Available Endpoints:
+          </div>
+          <div
+            style="
+              display: grid;
+              grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+              gap: 8px;
+              font-size: 13px;
+              color: #856404;
+            "
+          >
+            <div><strong>GET</strong> /books - List all books</div>
+            <div><strong>GET</strong> /books/:id - Get single book</div>
+            <div><strong>POST</strong> /books - Add new book</div>
+            <div><strong>PUT</strong> /books/:id - Update book</div>
+            <div><strong>DELETE</strong> /books/:id - Delete book</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Success Message -->
+      <div
+        id="successMsg"
+        style="
+          display: none;
+          background: #d4edda;
+          border: 2px solid #c3e6cb;
+          color: #155724;
+          padding: 15px 20px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          font-weight: 500;
+        "
+      ></div>
+
+      <!-- Error Message -->
+      <div
+        id="errorMsg"
+        style="
+          display: none;
+          background: #f8d7da;
+          border: 2px solid #f5c6cb;
+          color: #721c24;
+          padding: 15px 20px;
+          border-radius: 10px;
+          margin-bottom: 20px;
+          font-weight: 500;
+        "
+      ></div>
+
+      <!-- Loading -->
+      <div
+        id="loading"
+        style="
+          display: none;
+          text-align: center;
+          padding: 60px;
+          background: white;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        "
+      >
+        <div
+          style="
+            width: 60px;
+            height: 60px;
+            border: 6px solid #667eea;
+            border-top-color: transparent;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            animation: spin 1s linear infinite;
+          "
+        ></div>
+        <p style="color: #666; font-size: 18px; margin: 0">
+          Loading books from API...
+        </p>
+        <p style="color: #999; font-size: 14px; margin-top: 10px">GET /books</p>
+      </div>
+
+      <!-- Empty State -->
+      <div
+        id="emptyState"
+        style="
+          display: none;
+          text-align: center;
+          padding: 60px;
+          background: white;
+          border-radius: 15px;
+          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        "
+      >
+        <div style="font-size: 80px; margin-bottom: 20px; opacity: 0.5">📚</div>
+        <h2 style="color: #666; margin: 0 0 10px 0">No Books in Database</h2>
+        <p style="color: #999; font-size: 16px; margin: 0 0 20px 0">
+          In-memory storage is empty. Add your first book!
+        </p>
+        <button
+          onclick="showAddModal()"
+          style="
+            background: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+          "
+        >
+          ➕ Add First Book
+        </button>
+      </div>
+
+      <!-- Books Grid -->
+      <div
+        id="booksContainer"
+        style="
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+          gap: 20px;
+        "
+      ></div>
+
+      <!-- Add/Edit Modal -->
+      <div
+        id="modal"
+        style="
+          display: none;
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: rgba(0, 0, 0, 0.6);
+          z-index: 1000;
+          align-items: center;
+          justify-content: center;
+          padding: 20px;
+        "
+      >
+        <div
+          style="
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            max-width: 550px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+          "
         >
           <div
-            class="w-6 h-10 border-2 border-orange-400 rounded-full flex justify-center"
+            style="
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              margin-bottom: 25px;
+            "
           >
-            <div
-              class="w-1 h-3 bg-orange-400 rounded-full mt-2 animate-pulse"
-            ></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== 2. ABOUT ME SECTION ============================== -->
-      <section
-        id="about"
-        class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      >
-        <div class="max-w-7xl mx-auto relative z-10">
-          <div class="text-center mb-20">
-            <h2
-              class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent mb-4"
-            >
-              About Me
-            </h2>
-            <div
-              class="w-32 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 mx-auto mb-8 rounded-full"
-            ></div>
-            <p class="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Passionate DevOps and Web Development Enthusiast crafting
-              innovative solutions
-            </p>
-          </div>
-
-          <div class="grid lg:grid-cols-2 gap-16 items-center mb-20">
-            <!-- Left Side - Story -->
-            <div class="space-y-8">
-              <div
-                class="bg-gray-800/20 backdrop-blur-sm p-8 rounded-3xl border border-orange-500/20 hover:border-orange-500/40 transition-all duration-500"
-              >
-                <h3
-                  class="text-3xl font-bold text-white mb-6 bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                >
-                  My Journey
-                </h3>
-                <p class="text-gray-300 leading-relaxed mb-6">
-                  I am a passionate and proactive DevOps and Web Development
-                  Enthusiast currently pursuing a B.Tech in Computer Science
-                  Engineering at Symbiosis Institute of Technology, Nagpur. My
-                  journey has been driven by curiosity and a relentless pursuit
-                  of excellence.
-                </p>
-                <p class="text-gray-300 leading-relaxed">
-                  With multiple hands-on experiences across technical
-                  internships and hackathon organizations, I've built a solid
-                  foundation in DevOps, Web Development, Networking, and
-                  Cybersecurity, including CI/CD pipelines and infrastructure as
-                  code. My initiative to contribute both technically and
-                  organizationally sets me apart.
-                </p>
-              </div>
-            </div>
-
-            <!-- Right Side - Expertise Cards -->
-            <div class="space-y-4">
-              <!-- DevOps Card -->
-              <div
-                class="bg-orange-900/10 backdrop-blur-sm p-4 rounded-xl border border-orange-500/30 hover:border-orange-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-orange-500/20"
-              >
-                <div class="flex items-center mb-3">
-                  <div class="p-2 bg-orange-600 rounded-lg mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-settings"
-                    >
-                      <path
-                        d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.39a2 2 0 0 0 .73 2.73l.15.08a2 2 0 0 1 1 1.73v.52a2 2 0 0 1-1 1.73l-.15.08a2 2 0 0 0-.73 2.73l.22.39a2 2 0 0 0 2.73.73l.43-.25a2 2 0 0 1 1-1.73v.18a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.73v-.52a2 2 0 0 1 1-1.73l.15-.08a2 2 0 0 0 .73-2.73l-.22-.39a2 2 0 0 0-2.73-.73l-.43.25a2 2 0 0 1-1 1.73v-.18a2 2 0 0 0-2-2z"
-                      />
-                      <circle cx="12" cy="12" r="3" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-bold text-white">
-                      DevOps Engineering
-                    </h4>
-                    <p class="text-orange-200 text-xs">
-                      Infrastructure & Automation
-                    </p>
-                  </div>
-                </div>
-                <p class="text-gray-300 mb-2 text-sm">
-                  Expertise in containerized deployments, CI/CD pipelines, and
-                  cloud infrastructure management.
-                </p>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >Docker</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >Terraform</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >Jenkins</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >Kubernetes</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >GCP</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >Azure</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-orange-600/30 text-orange-200 rounded-full text-xs"
-                    >Digital Ocean</span
-                  >
-                </div>
-              </div>
-
-              <!-- Web Dev Card -->
-              <div
-                class="bg-pink-900/10 backdrop-blur-sm p-4 rounded-xl border border-pink-500/30 hover:border-pink-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-pink-500/20"
-              >
-                <div class="flex items-center mb-3">
-                  <div class="p-2 bg-pink-600 rounded-lg mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-code"
-                    >
-                      <polyline points="16 18 22 12 16 6" />
-                      <polyline points="8 6 2 12 8 18" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-bold text-white">
-                      Web Development
-                    </h4>
-                    <p class="text-pink-200 text-xs">Full-Stack Solutions</p>
-                  </div>
-                </div>
-                <p class="text-gray-300 mb-2 text-sm">
-                  Building modern, responsive web applications with cutting-edge
-                  technologies.
-                </p>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-1 bg-pink-600/30 text-pink-200 rounded-full text-xs"
-                    >React.js</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-pink-600/30 text-pink-200 rounded-full text-xs"
-                    >Node.js</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-pink-600/30 text-pink-200 rounded-full text-xs"
-                    >Flask</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-pink-600/30 text-pink-200 rounded-full text-xs"
-                    >Express.js</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-pink-600/30 text-pink-200 rounded-full text-xs"
-                    >Tailwind CSS</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-pink-600/30 text-pink-200 rounded-full text-xs"
-                    >JavaScript</span
-                  >
-                </div>
-              </div>
-
-              <!-- Core Competencies Card -->
-              <div
-                class="bg-red-900/10 backdrop-blur-sm p-4 rounded-xl border border-red-500/30 hover:border-red-500/50 transition-all duration-500 hover:shadow-lg hover:shadow-red-500/20"
-              >
-                <div class="flex items-center mb-3">
-                  <div class="p-2 bg-red-600 rounded-lg mr-3">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-shield"
-                    >
-                      <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <h4 class="text-lg font-bold text-white">
-                      Core Competencies
-                    </h4>
-                    <p class="text-red-200 text-xs">
-                      Security, Networking & Systems
-                    </p>
-                  </div>
-                </div>
-                <p class="text-gray-300 mb-2 text-sm">
-                  Strong foundation in algorithms, system design, and network
-                  security.
-                </p>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-1 bg-red-600/30 text-red-200 rounded-full text-xs"
-                    >Networking</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-red-600/30 text-red-200 rounded-full text-xs"
-                    >Web Application Security</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-red-600/30 text-red-200 rounded-full text-xs"
-                    >System Design</span
-                  >
-                  <span
-                    class="px-2 py-1 bg-red-600/30 text-red-200 rounded-full text-xs"
-                    >Linux</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Certifications Section -->
-          <div
-            class="bg-gray-800/5 backdrop-blur-sm p-10 rounded-3xl border border-gray-700/20"
-          >
-            <h3
-              class="text-3xl font-bold text-center text-white mb-12 bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-            >
-              Licenses & Certifications
-            </h3>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <!-- Certification 1: DevOps Intern -->
-              <div
-                class="bg-gray-800/10 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-300 hover:bg-gray-800/20 group"
-              >
-                <div class="flex items-start justify-between mb-4">
-                  <div
-                    class="p-3 bg-gradient-to-br from-orange-600 to-pink-600 rounded-lg group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-award text-white"
-                    >
-                      <circle cx="12" cy="8" r="6" />
-                      <path
-                        d="M15.47 12.33l-3.46 5.96a2 2 0 0 1-3.46 0l-3.46-5.96a2 2 0 0 1 1.73-3h6.92a2 2 0 0 1 1.73 3z"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    class="px-2 py-1 rounded-full text-xs font-medium bg-orange-600/30 text-orange-300"
-                  >
-                    Professional
-                  </span>
-                </div>
-                <h4 class="text-lg font-semibold text-white mb-2">
-                  DevOps Internship Certificate
-                </h4>
-                <p class="text-gray-400 text-sm mb-2">Elevate Labs</p>
-                <p class="text-gray-500 text-sm mb-3">Jul 2025</p>
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Docker</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Terraform</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Jenkins</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-400 rounded-full text-xs"
-                      >+3 more</span
-                    >
-                  </div>
-                </div>
-                <button
-                  onclick="alert('Link placeholder: Add actual certificate URL')"
-                  class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg text-sm font-medium hover:from-orange-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group"
-                >
-                  Visit Certificate
-                </button>
-              </div>
-
-              <!-- Certification 2: Red Hat Python -->
-              <div
-                class="bg-gray-800/10 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-300 hover:bg-gray-800/20 group"
-              >
-                <div class="flex items-start justify-between mb-4">
-                  <div
-                    class="p-3 bg-gradient-to-br from-orange-600 to-pink-600 rounded-lg group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-award text-white"
-                    >
-                      <circle cx="12" cy="8" r="6" />
-                      <path
-                        d="M15.47 12.33l-3.46 5.96a2 2 0 0 1-3.46 0l-3.46-5.96a2 2 0 0 1 1.73-3h6.92a2 2 0 0 1 1.73 3z"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    class="px-2 py-1 rounded-full text-xs font-medium bg-red-600/30 text-red-300"
-                  >
-                    Expert
-                  </span>
-                </div>
-                <h4 class="text-lg font-semibold text-white mb-2">
-                  Red Hat Certified Specialist in Python Programming (AD141 -
-                  RHA)
-                </h4>
-                <p class="text-gray-400 text-sm mb-2">Red Hat</p>
-                <p class="text-gray-500 text-sm mb-3">2024</p>
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Python</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Linux</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Scripting</span
-                    >
-                  </div>
-                </div>
-                <button
-                  onclick="alert('Link placeholder: Add actual certificate URL')"
-                  class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg text-sm font-medium hover:from-orange-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group"
-                >
-                  Visit Certificate
-                </button>
-              </div>
-
-              <!-- Certification 3: DSA with Python -->
-              <div
-                class="bg-gray-800/10 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-300 hover:bg-gray-800/20 group"
-              >
-                <div class="flex items-start justify-between mb-4">
-                  <div
-                    class="p-3 bg-gradient-to-br from-orange-600 to-pink-600 rounded-lg group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-award text-white"
-                    >
-                      <circle cx="12" cy="8" r="6" />
-                      <path
-                        d="M15.47 12.33l-3.46 5.96a2 2 0 0 1-3.46 0l-3.46-5.96a2 2 0 0 1 1.73-3h6.92a2 2 0 0 1 1.73 3z"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    class="px-2 py-1 rounded-full text-xs font-medium bg-orange-600/30 text-orange-300"
-                  >
-                    Professional
-                  </span>
-                </div>
-                <h4 class="text-lg font-semibold text-white mb-2">
-                  Data Structures and Algorithms using Python
-                </h4>
-                <p class="text-gray-400 text-sm mb-2">(Various)</p>
-                <p class="text-gray-500 text-sm mb-3">2024</p>
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Python</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Data Structures</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Algorithms</span
-                    >
-                  </div>
-                </div>
-                <button
-                  onclick="alert('Link placeholder: Add actual certificate URL')"
-                  class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg text-sm font-medium hover:from-orange-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group"
-                >
-                  Visit Certificate
-                </button>
-              </div>
-
-              <!-- Certification 4: Cisco Networking -->
-              <div
-                class="bg-gray-800/10 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-300 hover:bg-gray-800/20 group"
-              >
-                <div class="flex items-start justify-between mb-4">
-                  <div
-                    class="p-3 bg-gradient-to-br from-orange-600 to-pink-600 rounded-lg group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-award text-white"
-                    >
-                      <circle cx="12" cy="8" r="6" />
-                      <path
-                        d="M15.47 12.33l-3.46 5.96a2 2 0 0 1-3.46 0l-3.46-5.96a2 2 0 0 1 1.73-3h6.92a2 2 0 0 1 1.73 3z"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    class="px-2 py-1 rounded-full text-xs font-medium bg-green-600/30 text-green-300"
-                  >
-                    Foundation
-                  </span>
-                </div>
-                <h4 class="text-lg font-semibold text-white mb-2">
-                  Cisco Networking Basics
-                </h4>
-                <p class="text-gray-400 text-sm mb-2">Cisco</p>
-                <p class="text-gray-500 text-sm mb-3">2024</p>
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Networking</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >TCP/IP</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Computer Networks</span
-                    >
-                  </div>
-                </div>
-                <button
-                  onclick="alert('Link placeholder: Add actual certificate URL')"
-                  class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg text-sm font-medium hover:from-orange-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group"
-                >
-                  Visit Certificate
-                </button>
-              </div>
-
-              <!-- Certification 5: HackerRank SQL -->
-              <div
-                class="bg-gray-800/10 backdrop-blur-sm p-6 rounded-2xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-300 hover:bg-gray-800/20 group"
-              >
-                <div class="flex items-start justify-between mb-4">
-                  <div
-                    class="p-3 bg-gradient-to-br from-orange-600 to-pink-600 rounded-lg group-hover:scale-110 transition-transform duration-300"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-award text-white"
-                    >
-                      <circle cx="12" cy="8" r="6" />
-                      <path
-                        d="M15.47 12.33l-3.46 5.96a2 2 0 0 1-3.46 0l-3.46-5.96a2 2 0 0 1 1.73-3h6.92a2 2 0 0 1 1.73 3z"
-                      />
-                    </svg>
-                  </div>
-                  <span
-                    class="px-2 py-1 rounded-full text-xs font-medium bg-pink-600/30 text-pink-300"
-                  >
-                    Intermediate
-                  </span>
-                </div>
-                <h4 class="text-lg font-semibold text-white mb-2">
-                  HackerRank SQL (Intermediate)
-                </h4>
-                <p class="text-gray-400 text-sm mb-2">HackerRank</p>
-                <p class="text-gray-500 text-sm mb-3">2024</p>
-                <div class="mb-4">
-                  <div class="flex flex-wrap gap-1">
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >SQL</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Database Management</span
-                    >
-                    <span
-                      class="px-2 py-1 bg-gray-700/30 text-gray-300 rounded-full text-xs"
-                      >Query Optimization</span
-                    >
-                  </div>
-                </div>
-                <button
-                  onclick="alert('Link placeholder: Add actual certificate URL')"
-                  class="w-full mt-2 px-4 py-2 bg-gradient-to-r from-orange-600 to-pink-600 text-white rounded-lg text-sm font-medium hover:from-orange-700 hover:to-pink-700 transition-all duration-300 flex items-center justify-center gap-2 group"
-                >
-                  Visit Certificate
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== 3. EDUCATION SECTION ============================== -->
-      <section
-        id="education"
-        class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      >
-        <div class="max-w-7xl mx-auto relative z-10">
-          <div class="text-center mb-16">
-            <h2
-              class="text-4xl md:text-5xl font-bold bg-gradient-to-r from-orange-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent mb-4"
-            >
-              Education Journey
-            </h2>
-            <div
-              class="w-32 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 mx-auto mb-6 rounded-full"
-            ></div>
-            <p class="text-lg text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Academic foundation built through dedicated learning and
-              excellence
-            </p>
-          </div>
-
-          <!-- Education Cards - 3 columns for density -->
-          <div
-            class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto"
-          >
-            <!-- Card 1: B.Tech -->
-            <div
-              class="bg-gray-800/10 backdrop-blur-sm p-4 rounded-xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-orange-500/10 h-full"
-            >
-              <div class="flex items-start justify-between mb-3">
-                <div class="flex-1 min-w-0">
-                  <h3 class="text-lg font-bold text-white mb-1">
-                    B.Tech in Computer Science Engineering
-                  </h3>
-                  <p class="text-base text-gray-300 mb-2">
-                    Symbiosis Institute of Technology
-                  </p>
-                  <div class="flex flex-col gap-1 text-gray-400 text-sm">
-                    <div class="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-map-pin mr-2"
-                      >
-                        <path
-                          d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
-                        />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      Nagpur, Maharashtra
-                    </div>
-                    <div class="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-calendar mr-2"
-                      >
-                        <path d="M8 2v4" />
-                        <path d="M16 2v4" />
-                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                        <path d="M3 10h18" />
-                      </svg>
-                      Aug 2024 - May 2028
-                    </div>
-                    <div
-                      class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium w-fit mt-1 bg-green-600/20 text-green-300"
-                    >
-                      Pursuing
-                    </div>
-                  </div>
-                </div>
-                <div class="text-right ml-4">
-                  <div
-                    class="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                  >
-                    7.8/10
-                  </div>
-                  <p class="text-gray-400 text-xs">CGPA</p>
-                </div>
-              </div>
-
-              <div>
-                <h4
-                  class="text-base font-semibold text-white mb-2 flex items-center pt-2 border-t border-gray-700/50 mt-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-book-open mr-2 text-pink-400"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                  Core Subjects
-                </h4>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Data Structures & Algorithms</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Operating Systems</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Database Management Systems</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gray-700/30 text-gray-400 rounded-full text-xs"
-                    >+5 more</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 2: HSC (Class 12th) -->
-            <div
-              class="bg-gray-800/10 backdrop-blur-sm p-4 rounded-xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-orange-500/10 h-full"
-            >
-              <div class="flex items-start justify-between mb-3">
-                <div class="flex-1 min-w-0">
-                  <h3 class="text-lg font-bold text-white mb-1">
-                    HSC (Class 12th)
-                  </h3>
-                  <p class="text-base text-gray-300 mb-2">
-                    City Public School, Nagpur
-                  </p>
-                  <div class="flex flex-col gap-1 text-gray-400 text-sm">
-                    <div class="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-map-pin mr-2"
-                      >
-                        <path
-                          d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
-                        />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      Nagpur, Maharashtra
-                    </div>
-                    <div class="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-calendar mr-2"
-                      >
-                        <path d="M8 2v4" />
-                        <path d="M16 2v4" />
-                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                        <path d="M3 10h18" />
-                      </svg>
-                      2022
-                    </div>
-                    <div
-                      class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium w-fit mt-1 bg-pink-600/20 text-pink-300"
-                    >
-                      Completed
-                    </div>
-                  </div>
-                </div>
-                <div class="text-right ml-4">
-                  <div
-                    class="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                  >
-                    95.2%
-                  </div>
-                  <p class="text-gray-400 text-xs">Score</p>
-                </div>
-              </div>
-
-              <div>
-                <h4
-                  class="text-base font-semibold text-white mb-2 flex items-center pt-2 border-t border-gray-700/50 mt-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-book-open mr-2 text-pink-400"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                  Core Subjects
-                </h4>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Physics</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Chemistry</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Mathematics</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gray-700/30 text-gray-400 rounded-full text-xs"
-                    >+1 more</span
-                  >
-                </div>
-              </div>
-            </div>
-
-            <!-- Card 3: SSC (Class 10th) -->
-            <div
-              class="bg-gray-800/10 backdrop-blur-sm p-4 rounded-xl border border-gray-700/20 hover:border-orange-500/30 transition-all duration-500 hover:shadow-xl hover:shadow-orange-500/10 h-full"
-            >
-              <div class="flex items-start justify-between mb-3">
-                <div class="flex-1 min-w-0">
-                  <h3 class="text-lg font-bold text-white mb-1">
-                    SSC (Class 10th)
-                  </h3>
-                  <p class="text-base text-gray-300 mb-2">
-                    State Board, Nagpur
-                  </p>
-                  <div class="flex flex-col gap-1 text-gray-400 text-sm">
-                    <div class="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-map-pin mr-2"
-                      >
-                        <path
-                          d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
-                        />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                      Nagpur, Maharashtra
-                    </div>
-                    <div class="flex items-center">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="14"
-                        height="14"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-calendar mr-2"
-                      >
-                        <path d="M8 2v4" />
-                        <path d="M16 2v4" />
-                        <rect width="18" height="18" x="3" y="4" rx="2" />
-                        <path d="M3 10h18" />
-                      </svg>
-                      2020
-                    </div>
-                    <div
-                      class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium w-fit mt-1 bg-pink-600/20 text-pink-300"
-                    >
-                      Completed
-                    </div>
-                  </div>
-                </div>
-                <div class="text-right ml-4">
-                  <div
-                    class="text-xl font-bold bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                  >
-                    92%
-                  </div>
-                  <p class="text-gray-400 text-xs">Score</p>
-                </div>
-              </div>
-
-              <div>
-                <h4
-                  class="text-base font-semibold text-white mb-2 flex items-center pt-2 border-t border-gray-700/50 mt-3"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-book-open mr-2 text-pink-400"
-                  >
-                    <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
-                    <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
-                  </svg>
-                  Core Subjects
-                </h4>
-                <div class="flex flex-wrap gap-1">
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Science</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Social Science</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gradient-to-r from-orange-600/15 to-pink-600/15 text-gray-300 rounded-full text-xs border border-orange-500/20 hover:border-orange-500/40 transition-colors duration-300"
-                    >Mathematics</span
-                  >
-                  <span
-                    class="px-2 py-0.5 bg-gray-700/30 text-gray-400 rounded-full text-xs"
-                    >+1 more</span
-                  >
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== 4. EXPERIENCE SECTION ============================== -->
-      <section
-        id="experience"
-        class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      >
-        <div class="max-w-7xl mx-auto relative z-10">
-          <div class="text-center mb-20">
-            <div class="inline-flex items-center space-x-3 mb-6">
-              <div
-                class="w-12 h-12 bg-gradient-to-r from-orange-500 to-pink-500 rounded-full flex items-center justify-center"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-trending-up text-white"
-                >
-                  <polyline
-                    points="22 7 13.5 15.5 13.5 13.5 8.5 18.5 8.5 16.5 2 22"
-                  />
-                </svg>
-              </div>
+            <div>
               <h2
-                class="text-5xl md:text-6xl font-bold bg-gradient-to-r from-orange-400 via-pink-400 to-red-400 bg-clip-text text-transparent"
+                id="modalTitle"
+                style="margin: 0 0 5px 0; color: #333; font-size: 26px"
               >
-                Growth Journey
+                Add New Book
               </h2>
-            </div>
-            <p class="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-              Every step forward is a step toward achieving something bigger and
-              better than your current situation
-            </p>
-            <div
-              class="w-32 h-1 bg-gradient-to-r from-orange-500 via-pink-500 to-red-500 mx-auto mt-6 rounded-full"
-            ></div>
-          </div>
-
-          <!-- Growth Tree Layout -->
-          <div class="relative">
-            <!-- Main Growth Line -->
-            <div
-              class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-orange-500 via-pink-500 via-yellow-500 to-red-500 rounded-full opacity-60"
-            ></div>
-
-            <div class="space-y-16">
-              <!-- Experience 1: DevOps Intern -->
-              <div class="relative flex items-center md:flex-row group">
-                <!-- Central Growth Node -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 z-20">
-                  <div
-                    class="w-16 h-16 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 p-1"
-                  >
-                    <div
-                      class="w-full h-full bg-gray-900 rounded-full flex items-center justify-center text-white"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-zap w-6 h-6"
-                      >
-                        <polygon
-                          points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Experience Card -->
-                <div class="w-full md:w-6/12 md:pr-16">
-                  <div class="relative transition-all duration-500 transform">
-                    <div
-                      class="relative bg-gray-900/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-transparent transition-all duration-500"
-                    >
-                      <div class="flex items-start justify-between mb-4">
-                        <div class="flex-1">
-                          <div class="flex items-center space-x-3 mb-3">
-                            <span
-                              class="px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-orange-500 to-pink-500 text-white shadow-lg"
-                            >
-                              Internship
-                            </span>
-                            <div
-                              class="flex items-center text-gray-400 text-sm"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="lucide lucide-calendar w-4 h-4 mr-1"
-                              >
-                                <path d="M8 2v4" />
-                                <path d="M16 2v4" />
-                                <rect
-                                  width="18"
-                                  height="18"
-                                  x="3"
-                                  y="4"
-                                  rx="2"
-                                />
-                                <path d="M3 10h18" />
-                              </svg>
-                              Jun 2025 – Jul 2025
-                            </div>
-                          </div>
-                          <h3
-                            class="text-xl font-bold text-white mb-2 leading-tight"
-                          >
-                            DevOps Intern
-                          </h3>
-                          <h4
-                            class="text-base font-semibold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent"
-                          >
-                            Elevate Labs
-                          </h4>
-                        </div>
-                      </div>
-                      <div class="space-y-2">
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Built a Dockerized Flask app with RBAC, REST APIs,
-                            and automated email alerts, cutting incident
-                            resolution time by 30%
-                          </p>
-                        </div>
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Automated multi-cloud deployments on GCP and
-                            DigitalOcean using Terraform and shell scripts,
-                            reducing deployment time by 40%
-                          </p>
-                        </div>
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Set up Jenkins CI/CD pipelines for containerized
-                            apps, ensuring reliable multi-cloud deployments
-                          </p>
-                        </div>
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-orange-500 to-pink-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Created scalable, maintainable IaC templates with
-                            best practices for version control
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Side Growth Branches -->
-                <div
-                  class="hidden md:block absolute left-1/2 ml-8 top-1/2 transform -translate-y-1/2"
-                >
-                  <div
-                    class="w-16 h-0.5 bg-gradient-to-r from-orange-500 to-pink-500 opacity-60"
-                  ></div>
-                </div>
-              </div>
-
-              <!-- Experience 2: Hackathon Lead -->
-              <div class="relative flex items-center md:flex-row-reverse group">
-                <!-- Central Growth Node -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 z-20">
-                  <div
-                    class="w-16 h-16 rounded-full bg-gradient-to-r from-pink-500 to-red-500 p-1"
-                  >
-                    <div
-                      class="w-full h-full bg-gray-900 rounded-full flex items-center justify-center text-white"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-trending-up w-6 h-6"
-                      >
-                        <polyline
-                          points="22 7 13.5 15.5 13.5 13.5 8.5 18.5 8.5 16.5 2 22"
-                        />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Experience Card -->
-                <div class="w-full md:w-6/12 md:pl-16">
-                  <div class="relative transition-all duration-500 transform">
-                    <div
-                      class="relative bg-gray-900/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-transparent transition-all duration-500"
-                    >
-                      <div class="flex items-start justify-between mb-4">
-                        <div class="flex-1">
-                          <div class="flex items-center space-x-3 mb-3">
-                            <span
-                              class="px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg"
-                            >
-                              Volunteer
-                            </span>
-                            <div
-                              class="flex items-center text-gray-400 text-sm"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="lucide lucide-calendar w-4 h-4 mr-1"
-                              >
-                                <path d="M8 2v4" />
-                                <path d="M16 2v4" />
-                                <rect
-                                  width="18"
-                                  height="18"
-                                  x="3"
-                                  y="4"
-                                  rx="2"
-                                />
-                                <path d="M3 10h18" />
-                              </svg>
-                              Apr 2025 – Oct 2025
-                            </div>
-                          </div>
-                          <h3
-                            class="text-xl font-bold text-white mb-2 leading-tight"
-                          >
-                            Lead, Hacker's Experience Team & Web Developer
-                          </h3>
-                          <h4
-                            class="text-base font-semibold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent"
-                          >
-                            Hack4Maha & Hack4Brahma Hackathon
-                          </h4>
-                        </div>
-                      </div>
-
-                      <div class="space-y-2">
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-red-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Managed engagement and logistics for 500+
-                            participants, optimizing mentorship sessions and
-                            event experience
-                          </p>
-                        </div>
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-red-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Built and deployed the official hackathon website
-                            with React.js and Tailwind CSS, ensuring responsive
-                            design and smooth UX
-                          </p>
-                        </div>
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-pink-500 to-red-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Collaborated with cross-functional teams to deliver
-                            a seamless and successful event experience
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Side Growth Branches -->
-                <div
-                  class="hidden md:block absolute right-1/2 mr-8 top-1/2 transform -translate-y-1/2"
-                >
-                  <div
-                    class="w-16 h-0.5 bg-gradient-to-r from-pink-500 to-red-500 opacity-60"
-                  ></div>
-                </div>
-              </div>
-
-              <!-- Experience 3: Campus Ambassador -->
-              <div class="relative flex items-center md:flex-row group">
-                <!-- Central Growth Node -->
-                <div class="absolute left-1/2 transform -translate-x-1/2 z-20">
-                  <div
-                    class="w-16 h-16 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 p-1"
-                  >
-                    <div
-                      class="w-full h-full bg-gray-900 rounded-full flex items-center justify-center text-white"
-                    >
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        stroke-width="2"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        class="lucide lucide-map-pin w-6 h-6"
-                      >
-                        <path
-                          d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"
-                        />
-                        <circle cx="12" cy="10" r="3" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Experience Card -->
-                <div class="w-full md:w-6/12 md:pr-16">
-                  <div class="relative transition-all duration-500 transform">
-                    <div
-                      class="relative bg-gray-900/90 backdrop-blur-sm rounded-2xl p-6 border border-gray-700 hover:border-transparent transition-all duration-500"
-                    >
-                      <div class="flex items-start justify-between mb-4">
-                        <div class="flex-1">
-                          <div class="flex items-center space-x-3 mb-3">
-                            <span
-                              class="px-3 py-1 rounded-full text-sm font-semibold bg-gradient-to-r from-green-500 to-emerald-500 text-white shadow-lg"
-                            >
-                              Volunteer
-                            </span>
-                            <div
-                              class="flex items-center text-gray-400 text-sm"
-                            >
-                              <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="16"
-                                height="16"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                                class="lucide lucide-calendar w-4 h-4 mr-1"
-                              >
-                                <path d="M8 2v4" />
-                                <path d="M16 2v4" />
-                                <rect
-                                  width="18"
-                                  height="18"
-                                  x="3"
-                                  y="4"
-                                  rx="2"
-                                />
-                                <path d="M3 10h18" />
-                              </svg>
-                              Sep 2025 – Present
-                            </div>
-                          </div>
-                          <h3
-                            class="text-xl font-bold text-white mb-2 leading-tight"
-                          >
-                            Campus Ambassador
-                          </h3>
-                          <h4
-                            class="text-base font-semibold bg-gradient-to-r from-green-500 to-emerald-500 bg-clip-text text-transparent"
-                          >
-                            Unstop
-                          </h4>
-                        </div>
-                      </div>
-
-                      <div class="space-y-2">
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Promoting student participation in hackathons,
-                            coding competitions, and technical events across
-                            campus
-                          </p>
-                        </div>
-                        <div class="flex items-start space-x-2 group/item">
-                          <div
-                            class="w-2 h-2 rounded-full bg-gradient-to-r from-green-500 to-emerald-500 mt-2.5"
-                          ></div>
-                          <p
-                            class="text-gray-300 leading-relaxed flex-1 text-sm"
-                          >
-                            Building community engagement and facilitating
-                            networking opportunities for students in tech
-                            competitions
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Side Growth Branches -->
-                <div
-                  class="hidden md:block absolute left-1/2 ml-8 top-1/2 transform -translate-y-1/2"
-                >
-                  <div
-                    class="w-16 h-0.5 bg-gradient-to-r from-green-500 to-emerald-500 opacity-60"
-                  ></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Future Growth Indicator -->
-            <div class="text-center mt-20">
-              <div
-                class="inline-flex items-center space-x-4 bg-gray-900/60 backdrop-blur-sm px-8 py-6 rounded-2xl border border-gray-700"
+              <p
+                id="modalSubtitle"
+                style="margin: 0; color: #666; font-size: 14px"
               >
-                <div class="flex space-x-2">
-                  <div
-                    class="w-3 h-3 bg-orange-500 rounded-full animate-bounce"
-                  ></div>
-                  <div
-                    class="w-3 h-3 bg-pink-500 rounded-full animate-bounce"
-                    style="animation-delay: 0.1s"
-                  ></div>
-                  <div
-                    class="w-3 h-3 bg-yellow-500 rounded-full animate-bounce"
-                    style="animation-delay: 0.2s"
-                  ></div>
-                </div>
-                <span class="text-gray-300 font-medium"
-                  >The journey continues...</span
-                >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  class="lucide lucide-trending-up text-orange-400"
-                >
-                  <polyline
-                    points="22 7 13.5 15.5 13.5 13.5 8.5 18.5 8.5 16.5 2 22"
-                  />
-                </svg>
-              </div>
+                POST /books
+              </p>
             </div>
+            <button
+              onclick="closeModal()"
+              style="
+                background: none;
+                border: none;
+                font-size: 32px;
+                cursor: pointer;
+                color: #999;
+                line-height: 1;
+                padding: 0;
+                width: 40px;
+                height: 40px;
+              "
+            >
+              ×
+            </button>
+          </div>
+
+          <!-- BOOK ID WRAPPER: hidden for Add, shown readonly for Edit -->
+          <div id="bookIdWrapper" style="margin-bottom: 20px; display: none">
+            <label
+              style="
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: #495057;
+                font-size: 14px;
+              "
+              >Book ID</label
+            >
+            <input
+              type="text"
+              id="bookId"
+              readonly
+              style="
+                width: 100%;
+                padding: 12px 15px;
+                border: 2px solid #e9ecef;
+                border-radius: 8px;
+                font-size: 14px;
+                box-sizing: border-box;
+                background: #f8f9fa;
+                color: #6c757d;
+                font-family: 'Courier New', monospace;
+              "
+            />
+            <div style="font-size: 12px; color: #6c757d; margin-top: 5px">
+              Auto-generated by server (readonly)
+            </div>
+          </div>
+
+          <div style="margin-bottom: 20px">
+            <label
+              style="
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: #495057;
+                font-size: 14px;
+              "
+              >Title <span style="color: #dc3545">*</span></label
+            >
+            <input
+              type="text"
+              id="bookTitle"
+              placeholder="e.g., The Great Gatsby"
+              style="
+                width: 100%;
+                padding: 12px 15px;
+                border: 2px solid #dee2e6;
+                border-radius: 8px;
+                font-size: 14px;
+                box-sizing: border-box;
+              "
+            />
+          </div>
+
+          <div style="margin-bottom: 30px">
+            <label
+              style="
+                display: block;
+                margin-bottom: 8px;
+                font-weight: 600;
+                color: #495057;
+                font-size: 14px;
+              "
+              >Author <span style="color: #dc3545">*</span></label
+            >
+            <input
+              type="text"
+              id="bookAuthor"
+              placeholder="e.g., F. Scott Fitzgerald"
+              style="
+                width: 100%;
+                padding: 12px 15px;
+                border: 2px solid #dee2e6;
+                border-radius: 8px;
+                font-size: 14px;
+                box-sizing: border-box;
+              "
+            />
+          </div>
+
+          <div style="display: flex; gap: 12px">
+            <button
+              onclick="closeModal()"
+              style="
+                flex: 1;
+                background: #6c757d;
+                color: white;
+                border: none;
+                padding: 14px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 600;
+              "
+            >
+              Cancel
+            </button>
+            <button
+              id="saveBtn"
+              onclick="saveBook()"
+              style="
+                flex: 1;
+                background: #28a745;
+                color: white;
+                border: none;
+                padding: 14px;
+                border-radius: 8px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: 600;
+              "
+            >
+              💾 Add Book (POST)
+            </button>
           </div>
         </div>
-      </section>
+      </div>
+    </div>
 
-      <!-- ============================== 5. SKILLS SECTION ============================== -->
-      <section id="skills" class="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="max-w-7xl mx-auto">
-          <div class="text-center mb-16">
-            <h2
-              class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-            >
-              Technical Skills Matrix
-            </h2>
-            <div
-              class="w-24 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto"
-            ></div>
-            <p class="text-gray-400 mt-6 text-lg max-w-2xl mx-auto">
-              A specialized overview of technical proficiencies across key
-              domains.
-            </p>
-          </div>
+    <style>
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+      button:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+      button:active {
+        transform: translateY(0);
+      }
+      input:focus {
+        outline: none;
+        border-color: #667eea !important;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      }
+    </style>
 
-          <!-- New Compact Grid Layout (Skill Matrix) -->
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Category 1: DevOps -->
-            <div
-              class="bg-gray-800/60 p-4 rounded-xl border border-gray-700 hover:border-orange-500/50 transition-all duration-500 backdrop-blur-sm shadow-lg hover:shadow-orange-500/10"
-            >
-              <div class="flex flex-col items-start mb-4">
-                <div class="text-2xl mb-1">🛠️</div>
-                <h3
-                  class="text-lg font-bold bg-gradient-to-r from-orange-500 to-pink-500 bg-clip-text text-transparent border-b border-gray-700/50 w-full pb-2"
-                >
-                  DevOps Tools & Cloud
-                </h3>
-              </div>
-              <div class="grid gap-3">
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Docker</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      85%
+    <script>
+      let editingBookId = null;
+
+      function getApiUrl() {
+        return document.getElementById("apiUrl").value.trim();
+      }
+
+      function showSuccess(message) {
+        const successMsg = document.getElementById("successMsg");
+        successMsg.textContent = "✅ " + message;
+        successMsg.style.display = "block";
+        setTimeout(() => {
+          successMsg.style.display = "none";
+        }, 4000);
+      }
+
+      function showError(message) {
+        const errorMsg = document.getElementById("errorMsg");
+        errorMsg.textContent = "❌ " + message;
+        errorMsg.style.display = "block";
+        setTimeout(() => {
+          errorMsg.style.display = "none";
+        }, 5000);
+      }
+
+      function showLoading(show) {
+        document.getElementById("loading").style.display = show
+          ? "block"
+          : "none";
+        document.getElementById("booksContainer").style.display = show
+          ? "none"
+          : "grid";
+        document.getElementById("emptyState").style.display = "none";
+      }
+
+      async function loadBooks() {
+        showLoading(true);
+        try {
+          const response = await fetch(`${getApiUrl()}/books`);
+          if (!response.ok)
+            throw new Error(`HTTP ${response.status}: Failed to GET /books`);
+          const books = await response.json();
+          displayBooks(books);
+          showSuccess(
+            `Successfully loaded ${books.length} book(s) - GET /books`
+          );
+        } catch (error) {
+          showError(`GET /books failed: ${error.message}`);
+          showLoading(false);
+        }
+      }
+
+      function displayBooks(books) {
+        showLoading(false);
+        const container = document.getElementById("booksContainer");
+        const emptyState = document.getElementById("emptyState");
+
+        if (books.length === 0) {
+          container.style.display = "none";
+          emptyState.style.display = "block";
+          return;
+        }
+
+        emptyState.style.display = "none";
+        container.style.display = "grid";
+        container.innerHTML = books
+          .map((book) => {
+            // Safely escape single quotes for inline onclick attributes
+            const safeTitle = escapeHtml(book.title).replace(/'/g, "\\'");
+            const safeAuthor = escapeHtml(book.author).replace(/'/g, "\\'");
+            const id = book.id; // server returns id as string like "2501"
+            return `
+                <div style="background: white; border-radius: 15px; padding: 25px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; border-top: 4px solid #667eea;">
+                    <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                        <div style="flex: 1;">
+                            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
+                                <h3 style="margin: 0; color: #333; font-size: 20px; line-height: 1.3;">${escapeHtml(
+                                  book.title
+                                )}</h3>
+                            </div>
+                            <p style="margin: 0; color: #666; font-size: 15px;">✍️ ${escapeHtml(
+                              book.author
+                            )}</p>
+                        </div>
+                        <div style="background: #667eea; color: white; padding: 6px 12px; border-radius: 6px; font-size: 12px; font-weight: 700; font-family: 'Courier New', monospace;">
+                            ID: ${id}
+                        </div>
                     </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-orange-500 to-pink-500"
-                      style="width: 85%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Kubernetes</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      75%
+                    
+                    <div style="border-top: 1px solid #e9ecef; margin: 15px 0; padding-top: 15px;">
+                        <div style="font-size: 12px; color: #6c757d; margin-bottom: 5px; font-weight: 600;">Object Structure:</div>
+                        <pre style="background: #f8f9fa; padding: 10px; border-radius: 6px; font-size: 12px; margin: 0; overflow-x: auto; font-family: 'Courier New', monospace;">{
+  "id": "${id}",
+  "title": "${escapeHtml(book.title)}",
+  "author": "${escapeHtml(book.author)}"
+}</pre>
                     </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-orange-500 to-pink-500"
-                      style="width: 75%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Jenkins</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      80%
+                    
+                    <div style="display: flex; gap: 10px; margin-top: 20px;">
+                        <button onclick="editBook('${id}', '${safeTitle}', '${safeAuthor}')" style="flex: 1; background: #ffc107; color: #000; border: none; padding: 11px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                            ✏️ Edit (PUT)
+                        </button>
+                        <button onclick="deleteBook('${id}')" style="flex: 1; background: #dc3545; color: white; border: none; padding: 11px; border-radius: 8px; cursor: pointer; font-size: 14px; font-weight: 600;">
+                            🗑️ Delete (DELETE)
+                        </button>
                     </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-orange-500 to-pink-500"
-                      style="width: 80%"
-                    ></div>
-                  </div>
                 </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Terraform</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      70%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-orange-500 to-pink-500"
-                      style="width: 70%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">Git</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      90%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-orange-500 to-pink-500"
-                      style="width: 90%"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            `;
+          })
+          .join("");
+      }
 
-            <!-- Category 2: Web Dev -->
-            <div
-              class="bg-gray-800/60 p-4 rounded-xl border border-gray-700 hover:border-orange-500/50 transition-all duration-500 backdrop-blur-sm shadow-lg hover:shadow-orange-500/10"
-            >
-              <div class="flex flex-col items-start mb-4">
-                <div class="text-2xl mb-1">🌐</div>
-                <h3
-                  class="text-lg font-bold bg-gradient-to-r from-pink-500 to-red-500 bg-clip-text text-transparent border-b border-gray-700/50 w-full pb-2"
-                >
-                  Web Development & Frameworks
-                </h3>
-              </div>
-              <div class="grid gap-3">
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >React.js</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      85%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-pink-500 to-red-500"
-                      style="width: 85%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >JavaScript</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      90%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-pink-500 to-red-500"
-                      style="width: 90%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >HTML/CSS</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      95%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-pink-500 to-red-500"
-                      style="width: 95%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">Flask</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      80%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-pink-500 to-red-500"
-                      style="width: 80%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Tailwind CSS</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      85%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-pink-500 to-red-500"
-                      style="width: 85%"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      function escapeHtml(text) {
+        const div = document.createElement("div");
+        div.textContent = text;
+        return div.innerHTML;
+      }
 
-            <!-- Category 3: Programming -->
-            <div
-              class="bg-gray-800/60 p-4 rounded-xl border border-gray-700 hover:border-orange-500/50 transition-all duration-500 backdrop-blur-sm shadow-lg hover:shadow-orange-500/10"
-            >
-              <div class="flex flex-col items-start mb-4">
-                <div class="text-2xl mb-1">💻</div>
-                <h3
-                  class="text-lg font-bold bg-gradient-to-r from-yellow-500 to-orange-500 bg-clip-text text-transparent border-b border-gray-700/50 w-full pb-2"
-                >
-                  Programming Languages & Core
-                </h3>
-              </div>
-              <div class="grid gap-3">
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Python</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      90%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"
-                      style="width: 90%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">Java</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      80%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"
-                      style="width: 80%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">C</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      75%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"
-                      style="width: 75%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">SQL</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      85%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"
-                      style="width: 85%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >Bash/Shell Scripting</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      80%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-yellow-500 to-orange-500"
-                      style="width: 80%"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+      function showAddModal() {
+        editingBookId = null;
+        document.getElementById("modalTitle").textContent = "Add New Book";
+        document.getElementById("modalSubtitle").textContent = "POST /books";
+        // hide ID wrapper for Add
+        document.getElementById("bookIdWrapper").style.display = "none";
+        document.getElementById("bookId").value = "";
+        document.getElementById("bookTitle").value = "";
+        document.getElementById("bookAuthor").value = "";
+        document.getElementById("saveBtn").innerHTML = "💾 Add Book (POST)";
+        document.getElementById("saveBtn").style.background = "#28a745";
+        document.getElementById("modal").style.display = "flex";
+        setTimeout(() => document.getElementById("bookTitle").focus(), 100);
+      }
 
-            <!-- Category 4: Databases & Workflow -->
-            <div
-              class="bg-gray-800/60 p-4 rounded-xl border border-gray-700 hover:border-orange-500/50 transition-all duration-500 backdrop-blur-sm shadow-lg hover:shadow-orange-500/10"
-            >
-              <div class="flex flex-col items-start mb-4">
-                <div class="text-2xl mb-1">⚙️</div>
-                <h3
-                  class="text-lg font-bold bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent border-b border-gray-700/50 w-full pb-2"
-                >
-                  Databases & Workflow
-                </h3>
-              </div>
-              <div class="grid gap-3">
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">MySQL</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      85%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-500"
-                      style="width: 85%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >PostgreSQL</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      75%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-500"
-                      style="width: 75%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >MongoDB</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      70%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-500"
-                      style="width: 70%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm"
-                      >REST APIs</span
-                    >
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      85%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-500"
-                      style="width: 85%"
-                    ></div>
-                  </div>
-                </div>
-                <div class="group cursor-pointer py-1">
-                  <div class="flex items-center justify-between mb-1">
-                    <span class="text-gray-300 font-medium text-sm">Linux</span>
-                    <div
-                      class="px-2 rounded-full text-xs font-semibold bg-gray-700 text-gray-300"
-                    >
-                      80%
-                    </div>
-                  </div>
-                  <div
-                    class="relative w-full bg-gray-700 rounded-full h-2 overflow-hidden"
-                  >
-                    <div
-                      class="h-full rounded-full bg-gradient-to-r from-red-500 to-orange-500"
-                      style="width: 80%"
-                    ></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      function editBook(id, title, author) {
+        editingBookId = id;
+        document.getElementById("modalTitle").textContent = "Edit Book";
+        document.getElementById(
+          "modalSubtitle"
+        ).textContent = `PUT /books/${id}`;
+        // show ID wrapper (readonly)
+        document.getElementById("bookIdWrapper").style.display = "block";
+        document.getElementById("bookId").value = id;
+        document.getElementById("bookTitle").value = title;
+        document.getElementById("bookAuthor").value = author;
+        document.getElementById("saveBtn").innerHTML = "💾 Update Book (PUT)";
+        document.getElementById("saveBtn").style.background = "#ffc107";
+        document.getElementById("modal").style.display = "flex";
+        setTimeout(() => document.getElementById("bookTitle").focus(), 100);
+      }
 
-          <!-- Future Growth Indicator -->
-          <div class="mt-16 text-center">
-            <div
-              class="inline-flex items-center space-x-4 bg-gray-900/60 backdrop-blur-sm px-8 py-4 rounded-full border border-gray-700"
-            >
-              <div class="flex space-x-2">
-                <div
-                  class="w-3 h-3 bg-orange-500 rounded-full animate-bounce"
-                ></div>
-                <div
-                  class="w-3 h-3 bg-pink-500 rounded-full animate-bounce"
-                  style="animation-delay: 0.1s"
-                ></div>
-                <div
-                  class="w-3 h-3 bg-yellow-500 rounded-full animate-bounce"
-                  style="animation-delay: 0.2s"
-                ></div>
-              </div>
-              <span class="text-gray-400"
-                >Continuous skill acquisition is ongoing.</span
-              >
-            </div>
-          </div>
-        </div>
-      </section>
+      function closeModal() {
+        document.getElementById("modal").style.display = "none";
+        editingBookId = null;
+      }
 
-      <!-- ============================== 6. PROJECTS SECTION ============================== -->
-      <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-6xl mx-auto">
-          <div class="text-center mb-16">
-            <h2
-              class="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-            >
-              Key Projects
-            </h2>
-            <div
-              class="w-24 h-1 bg-gradient-to-r from-orange-500 to-pink-500 mx-auto"
-            ></div>
-          </div>
+      async function saveBook() {
+        const title = document.getElementById("bookTitle").value.trim();
+        const author = document.getElementById("bookAuthor").value.trim();
 
-          <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Project 1: Multi-Cloud Auto Deployment -->
-            <div
-              class="bg-gray-800/50 rounded-lg border from-orange-500 to-pink-500 hover:from-orange-600 hover:to-pink-600 border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 group"
-            >
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-4">
-                  <h3 class="text-xl font-bold text-white">
-                    Multi-Cloud Auto Deployment (GCP + DigitalOcean)
-                  </h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-star text-yellow-400"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
+        if (!title || !author) {
+          showError("Both title and author fields are required");
+          return;
+        }
 
-                <p class="text-gray-300 mb-4 leading-relaxed">
-                  Deployed scalable NGINX web servers across Google Cloud
-                  Platform (GCP) and DigitalOcean using Terraform, ensuring
-                  consistent and automated multi-cloud infrastructure
-                  provisioning.
-                </p>
+        try {
+          const url = editingBookId
+            ? `${getApiUrl()}/books/${editingBookId}`
+            : `${getApiUrl()}/books`;
 
-                <div class="mb-4">
-                  <h4 class="text-sm font-semibold text-orange-400 mb-2">
-                    Key Features:
-                  </h4>
-                  <ul class="space-y-1">
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Provisioned and configured Ubuntu VMs on GCP and
-                      DigitalOcean using modular Terraform configuration.
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Automated NGINX installation and custom web content
-                      deployment using a single, idempotent setup script.
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Connected via SSH using Terraform's `connection` block and
-                      `remote-exec` for secure server initialization.
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Implemented Infrastructure as Code (IaC) best practices
-                      for secure and repeatable deployments.
-                    </li>
-                  </ul>
-                </div>
+          const method = editingBookId ? "PUT" : "POST";
+          const endpoint = editingBookId
+            ? `PUT /books/${editingBookId}`
+            : "POST /books";
 
-                <div class="mb-6">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Terraform</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >GCP</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >DigitalOcean</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >NGINX</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Bash/Shell</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >SSH</span
-                    >
-                  </div>
-                </div>
+          const payload = { title, author };
 
-                <div class="flex space-x-4">
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center px-4 py-2 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-lg transition-all duration-300 hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-github mr-2"
-                    >
-                      <path
-                        d="M15 22V18M9 22V18M12 22a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9S3 8.03 3 13a9 9 0 0 0 9 9Z"
-                      />
-                      <path d="M12 18s-3 1-3.5 1.5M12 18s3 1 3.5 1.5" />
-                    </svg>
-                    <span class="text-sm">View Code</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+          const response = await fetch(url, {
+            method: method,
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(payload),
+          });
 
-            <!-- Project 2: Incident Management System -->
-            <div
-              class="bg-gray-800/50 rounded-lg border from-orange-500 to-red-500 hover:from-orange-600 hover:to-red-600 border-orange-500/20 hover:border-orange-500/50 transition-all duration-300 group"
-            >
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-4">
-                  <h3 class="text-xl font-bold text-white">
-                    Incident Management System
-                  </h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-star text-yellow-400"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
+          if (!response.ok) {
+            const text = await response.text();
+            throw new Error(`HTTP ${response.status}: ${text}`);
+          }
 
-                <p class="text-gray-300 mb-4 leading-relaxed">
-                  A comprehensive ticket tracking system with role-based access,
-                  email notifications, and workflow automation built for ELEVATE
-                  LABS.
-                </p>
+          await response.json();
+          closeModal();
+          showSuccess(
+            `Book ${
+              editingBookId ? "updated" : "added"
+            } successfully - ${endpoint}`
+          );
+          loadBooks();
+        } catch (error) {
+          showError(
+            `${editingBookId ? "PUT" : "POST"} failed: ${error.message}`
+          );
+        }
+      }
 
-                <div class="mb-4">
-                  <h4 class="text-sm font-semibold text-orange-400 mb-2">
-                    Key Features:
-                  </h4>
-                  <ul class="space-y-1">
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Role-based access control
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Ticket lifecycle tracking
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Email notifications
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      User authentication
-                    </li>
-                  </ul>
-                </div>
+      async function deleteBook(id) {
+        if (
+          !confirm(
+            `Are you sure you want to DELETE book ID ${id}?\n\nEndpoint: DELETE /books/${id}`
+          )
+        )
+          return;
 
-                <div class="mb-6">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Flask</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Docker</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >SQLite</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >SMTP</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Bootstrap</span
-                    >
-                  </div>
-                </div>
+        try {
+          const response = await fetch(`${getApiUrl()}/books/${id}`, {
+            method: "DELETE",
+          });
 
-                <div class="flex space-x-4">
-                  <a
-                    href="https://github.com/username/Incident-Management-Public"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center px-4 py-2 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-lg transition-all duration-300 hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-github mr-2"
-                    >
-                      <path
-                        d="M15 22V18M9 22V18M12 22a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9S3 8.03 3 13a9 9 0 0 0 9 9Z"
-                      />
-                      <path d="M12 18s-3 1-3.5 1.5M12 18s3 1 3.5 1.5" />
-                    </svg>
-                    <span class="text-sm">View Code</span>
-                  </a>
-                </div>
-              </div>
-            </div>
+          if (!response.ok) {
+            const text = await response.text();
+            throw new Error(`HTTP ${response.status}: ${text}`);
+          }
 
-            <!-- Project 3: Hack4Maha Website -->
-            <div
-              class="bg-gray-800/50 rounded-lg border from-pink-500 to-red-400 hover:from-pink-600 hover:to-red-500 border-pink-500/20 hover:border-pink-500/50 transition-all duration-300 group"
-            >
-              <div class="p-6">
-                <div class="flex items-center justify-between mb-4">
-                  <h3 class="text-xl font-bold text-white">
-                    Hack4Maha Website
-                  </h3>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    class="lucide lucide-star text-yellow-400"
-                  >
-                    <polygon
-                      points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
-                    />
-                  </svg>
-                </div>
+          showSuccess(
+            `Book ID ${id} deleted successfully - DELETE /books/${id}`
+          );
+          loadBooks();
+        } catch (error) {
+          showError(`DELETE /books/${id} failed: ${error.message}`);
+        }
+      }
 
-                <p class="text-gray-300 mb-4 leading-relaxed">
-                  Frontend development for a major hackathon event, focusing on
-                  user experience and responsive design.
-                </p>
+      // Load books on page load
+      window.addEventListener("DOMContentLoaded", () => {
+        loadBooks();
+      });
 
-                <div class="mb-4">
-                  <h4 class="text-sm font-semibold text-orange-400 mb-2">
-                    Key Features:
-                  </h4>
-                  <ul class="space-y-1">
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Responsive design
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Event management
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      User registration
-                    </li>
-                    <li class="text-gray-300 text-sm flex items-start">
-                      <span class="text-orange-400 mr-2">•</span>
-                      Modern UI/UX
-                    </li>
-                  </ul>
-                </div>
-
-                <div class="mb-6">
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >React.js</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Tailwind CSS</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >JavaScript</span
-                    >
-                    <span
-                      class="px-3 py-1 bg-gray-700 text-orange-400 rounded-full text-xs"
-                      >Git</span
-                    >
-                  </div>
-                </div>
-
-                <div class="flex space-x-4">
-                  <a
-                    href="#"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="flex items-center px-4 py-2 bg-gradient-to-r from-gray-700 to-gray-600 hover:from-gray-600 hover:to-gray-500 rounded-lg transition-all duration-300 hover:scale-105"
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="16"
-                      height="16"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      stroke-width="2"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      class="lucide lucide-github mr-2"
-                    >
-                      <path
-                        d="M15 22V18M9 22V18M12 22a9 9 0 0 0 9-9c0-4.97-4.03-9-9-9S3 8.03 3 13a9 9 0 0 0 9 9Z"
-                      />
-                      <path d="M12 18s-3 1-3.5 1.5M12 18s3 1 3.5 1.5" />
-                    </svg>
-                    <span class="text-sm">View Code</span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ============================== 7. CONTACT SECTION ============================== -->
-      <section
-        id="contact"
-        class="py-20 px-4 sm:px-6 lg:px-8 relative overflow-hidden"
-      >
-        <div class="max-w-7xl mx-auto relative z-10">
-          <div class="text-center mb-20">
-            <h2
-              class="text-5xl md:text-6xl font-bold mb-8 bg-gradient-to-r from-orange-400 via-pink-400 to-yellow-400 bg-clip-text text-transparent"
-            >
-              Get In Touch
-            </h2>
-            <div
-              class="w-32 h-1.5 bg-gradient-to-r from-orange-500 via-pink-500 to-yellow-500 mx-auto mb-8 rounded-full"
-            ></div>
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed">
-              Ready to bring your ideas to life? Let's collaborate and create
-              something amazing together.
-            </p>
-          </div>
-
-          <div class="grid lg:grid-cols-5 gap-12 items-start">
-            <!-- Contact Methods - Left Side -->
-            <div class="lg:col-span-2 space-y-8">
-              <div>
-                <h3
-                  class="text-3xl font-bold text-white mb-6 bg-gradient-to-r from-orange-400 to-pink-400 bg-clip-text text-transparent"
-                >
-                  Let's Connect
-                </h3>
-                <p class="text-gray-300 leading-relaxed text-lg mb-8">
-                  I'm always excited to discuss new opportunities, innovative
-                  projects, or just chat about the latest in technology and
-                  development.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+      // Allow Enter key to save
+      document.addEventListener("keydown", (e) => {
+        if (
+          e.key === "Enter" &&
+          document.getElementById("modal").style.display === "flex"
+        ) {
+          saveBook();
+        }
+      });
+    </script>
   </body>
 </html>
